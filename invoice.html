@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Hoorain Cosmetics</h2>
+<p>0303-4141011</p>
+<p>Invoice / انوائس</p>
+<div id="data"></div>
+<button onclick="window.print()">Print</button>
+
+<script>
+let i=JSON.parse(localStorage.getItem("items"))||[];
+let h="";
+i.forEach(x=>h+=`<p>${x.n} - ${x.p} x ${x.q}</p>`);
+data.innerHTML=h;
+</script>
+</body>
+</html>
