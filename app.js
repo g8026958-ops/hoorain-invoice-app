@@ -47,3 +47,63 @@ function displayProducts() {
 }
 
 displayProducts();
+let cart = [];
+
+function loadProductsForSale() {
+  let select = document.getElementById("productSelect");
+  if (!select) return;
+
+  select.innerHTML = "";
+  products.forEach((p, i) => {
+    select.innerHTML += `<option value="${i}">${p.name} - Rs ${p.price}</option>`;
+  });
+}
+
+function addToCart() {
+  let index = document.getElementById("productSelect").value;
+  let qty = document.getElementById("saleQty").value;
+
+  if (!qty) {
+    alert("Enter quantity");
+    return;
+  }
+
+  let product = products[index];
+  cart.push({
+    name: product.name,
+    price: product.price,
+    qty: qty,
+    total: product.price * qty
+  });
+
+  displayInvoice();
+}
+
+function displayInvoice() {
+  let table = document.getElementById("invoiceTable");
+  if (!table) return;
+
+  let total = 0;
+  table.innerHTML = "";
+
+  cart.forEach(item => {
+    total += item.total;
+    table.innerHTML += `
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.price}</td>
+        <td>${item.qty}</td>
+        <td>${item.total}</td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("grandTotal").innerText =
+    "Total: Rs " + total;
+}
+
+function printInvoice() {
+  window.print();
+}
+
+loadProductsForSale();
