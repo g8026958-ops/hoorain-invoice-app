@@ -107,3 +107,28 @@ function printInvoice() {
 }
 
 loadProductsForSale();
+// ===== LOGIN SYSTEM =====
+
+function login() {
+  let pin = document.getElementById("pin").value;
+  let role = "";
+
+  if (pin === "1111") role = "admin";
+  else if (pin === "2222") role = "cashier1";
+  else if (pin === "3333") role = "cashier2";
+  else {
+    document.getElementById("error").innerText = "Wrong PIN";
+    return;
+  }
+
+  localStorage.setItem("userRole", role);
+  window.location.href = "index.html";
+}
+
+// Protect pages
+function protectPage() {
+  let role = localStorage.getItem("userRole");
+  if (!role) {
+    window.location.href = "login.html";
+  }
+}
