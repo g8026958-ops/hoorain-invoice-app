@@ -1,2 +1,49 @@
-body{font-family:Arial;background:#fff0f5}
-button{background:#c2185b;color:white;padding:8px;border:none}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fdecef;
+}
+
+header {
+  background: #c2185b;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: 10px 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #c2185b;
+  font-weight: bold;
+}
+
+nav a.active {
+  border-bottom: 2px solid #c2185b;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 15px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin: 0;
+  color: #c2185b;
+}
