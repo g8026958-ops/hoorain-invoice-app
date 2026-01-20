@@ -2,28 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hoorain Cosmetics POS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoorain Cosmetics - Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header style="background:#c2185b;color:white;padding:10px;text-align:center">
-  <h2>Hoorain Cosmetics</h2>
+<header>
+  <h1>Hoorain Cosmetics</h1>
   <p>📞 0303-4141011</p>
 </header>
 
-<div style="padding:10px">
-  <h3>Add Product</h3>
-  <input id="name" placeholder="Product Name"><br><br>
-  <input id="price" placeholder="Price"><br><br>
-  <input id="qty" placeholder="Quantity"><br><br>
-  <button onclick="add()">Add</button>
+<nav>
+  <a href="index.html" class="active">Dashboard</a>
+  <a href="products.html">Products</a>
+  <a href="sales.html">Sales</a>
+  <a href="reports.html">Reports</a>
+  <a href="settings.html">Settings</a>
+</nav>
 
-  <h3>Products</h3>
-  <ul id="list"></ul>
+<section class="cards">
+  <div class="card">
+    <h3>Today Sale</h3>
+    <p>Rs 0</p>
+  </div>
 
-  <a href="invoice.html">Generate Invoice</a>
-</div>
+  <div class="card">
+    <h3>Monthly Sale</h3>
+    <p>Rs 0</p>
+  </div>
+
+  <div class="card">
+    <h3>Total Products</h3>
+    <p>0</p>
+  </div>
+
+  <div class="card">
+    <h3>Low Stock</h3>
+    <p>0</p>
+  </div>
+</section>
 
 <script src="app.js"></script>
 </body>
