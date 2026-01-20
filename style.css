@@ -29,6 +29,36 @@ nav a.active {
 }
 
 .cards {
+  .container {
+  padding: 15px;
+}
+
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+button {
+  background: #c2185b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
