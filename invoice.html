@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice</title>
+<style>
+body{font-family:Arial}
+h2{text-align:center}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #000;padding:6px;text-align:center}
+</style>
+</head>
 <body>
+
 <h2>Hoorain Cosmetics</h2>
-<p>0303-4141011</p>
-<p>Invoice / انوائس</p>
-<div id="data"></div>
-<button onclick="window.print()">Print</button>
+<p style="text-align:center">📞 0303-4141011</p>
+<p style="text-align:center">Invoice / انوائس</p>
+
+<table>
+<tr>
+  <th>Item</th>
+  <th>Price</th>
+  <th>Qty</th>
+  <th>Total</th>
+</tr>
+
+<tbody id="rows"></tbody>
+</table>
+
+<h3 id="grand"></h3>
+
+<button onclick="window.print()">🖨 Print Invoice</button>
 
 <script>
-let i=JSON.parse(localStorage.getItem("items"))||[];
-let h="";
-i.forEach(x=>h+=`<p>${x.n} - ${x.p} x ${x.q}</p>`);
-data.innerHTML=h;
+let items = JSON.parse(localStorage.getItem("items")) || [];
+let rows = "";
+let sum = 0;
+
+items.forEach(i=>{
+  let t = i.price * i.qty;
+  sum += t;
+  rows += `<tr>
+    <td>${i.name}</td>
+    <td>${i.price}</td>
+    <td>${i.qty}</td>
+    <td>${t}</td>
+  </tr>`;
+});
+
+document.getElementById("rows").innerHTML = rows;
+document.getElementById("grand").innerText = "Grand Total: " + sum;
 </script>
+
 </body>
 </html>
