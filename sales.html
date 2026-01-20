@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sales - Hoorain Cosmetics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Hoorain Cosmetics</h1>
+  <p>📞 0303-4141011</p>
+</header>
+
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="products.html">Products</a>
+  <a href="sales.html" class="active">Sales</a>
+  <a href="reports.html">Reports</a>
+  <a href="settings.html">Settings</a>
+</nav>
+
+<section class="container">
+  <h2>Create Sale</h2>
+
+  <select id="productSelect"></select>
+  <input type="number" id="saleQty" placeholder="Quantity">
+  <button onclick="addToCart()">Add to Cart</button>
+
+  <h2>Invoice</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="invoiceTable"></tbody>
+  </table>
+
+  <h3 id="grandTotal">Total: Rs 0</h3>
+
+  <button onclick="printInvoice()">Print Invoice</button>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
