@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Hoorain Cosmetics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Hoorain Cosmetics</h1>
+  <p>📞 0303-4141011</p>
+</header>
+
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="products.html" class="active">Products</a>
+  <a href="sales.html">Sales</a>
+  <a href="reports.html">Reports</a>
+  <a href="settings.html">Settings</a>
+</nav>
+
+<section class="container">
+  <h2>Add Product</h2>
+
+  <input type="text" id="pname" placeholder="Product Name">
+  <input type="number" id="pprice" placeholder="Price">
+  <input type="number" id="pqty" placeholder="Quantity">
+  <button onclick="addProduct()">Add Product</button>
+
+  <h2>Product List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="productTable"></tbody>
+  </table>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
