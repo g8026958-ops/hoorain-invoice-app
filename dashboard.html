@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hoorain Cosmetics - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial;
+      background: #f5f5f5;
+      margin: 0;
+    }
+    header {
+      background: #c2185b;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .content {
+      padding: 15px;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+    input {
+      padding: 6px;
+      margin: 4px 0;
+      width: 100%;
+    }
+    .low {
+      color: red;
+      font-weight: bold;
+    }
+    .hot {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<script>
+  // simple protection
+  if (localStorage.getItem("login") !== "true") {
+    window.location.href = "index.html";
+  }
+
+  let items = JSON.parse(localStorage.getItem("items")) || [];
+
+  function logout() {
+    localStorage.removeItem("login");
+    window.location.href = "index.html";
+  }
+
+  function addItem() {
+    const name = document.getElementById("name").value;
+    const sale = Number(document.getElementById("sale").value);
+    const stock = Number(document.getElementById("stock").value);
+
+    if (!name || !sale || !stock) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    items.push({ name, sale, stock });
+    localStorage.setItem("items", JSON.stringify(items));
+
+    document.getElementById("name").value = "";
+    document.getElementById("sale").value = "";
+    document.getElementById("stock").value = "";
+
+    render();
+  }
+
+  function render() {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    items.forEach(i => {
+      let tag = "";
+      if (i.sale >= 10) tag = " <span class='hot'>(Hot Item)</span>";
+      if (i.stock <= 5) tag = " <span class='low'>(Low Stock)</span>";
+
+      list.innerHTML += `
+        <p>
+          <b>${i.name}</b> |
+          Sale: ${i.sale} |
+          Stock: ${i.stock}
+          ${tag}
+        </p>`;
+    });
+  }
+
+  window.onload = render;
+</script>
+
+<header>
+  <div>Hoorain Cosmetics – Dashboard</div>
+  <button onclick="logout()">Logout</button>
+</header>
+
+<div class="content">
+
+  <div class="card">
+    <h3>Add Sale</h3>
+    <input id="name" placeholder="Product Name">
+    <input id="sale" type="number" placeholder="Sale Quantity">
+    <input id="stock" type="number" placeholder="Remaining Stock">
+    <button onclick="addItem()">Add</button>
+  </div>
+
+  <div class="card">
+    <h3>Sales Status</h3>
+    <div id="list"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
